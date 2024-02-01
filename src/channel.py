@@ -50,3 +50,31 @@ class Channel:
         with open(filename, "w") as file:
             json.dump(self.youtube, file, indent=2, ensure_ascii=False)
 
+    def __str__(self):
+        return f'{self.title}, {self.url}'
+
+    def __add__(self, other):
+        return self.subscriber_count + other.subscriber_count
+
+    def __sub__(self, other):
+        return int(self.subscriber_count) - int(other.subscriber_count)
+
+    def __rsub__(self, other):
+        result_3 = self.subscriber_count - other.subscriber_count
+        return result_3
+
+    def __gt__(self, other):
+        return self.subscriber_count > other.subscriber_count
+
+    def __ge__(self, other):
+        return self.subscriber_count >= other.subscriber_count
+
+    def __lt__(self, other):
+        return self.subscriber_count < other.subscriber_count
+
+    def __le__(self, other):
+        return self.subscriber_count <= other.subscriber_count
+
+    def __eq__(self, other):
+        return self.subscriber_count == other.subscriber_count
+

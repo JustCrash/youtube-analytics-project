@@ -40,7 +40,7 @@ class Channel:
 
     @channel_id.setter
     def channel_id(self, channel_id):
-           self.__channel_id = channel_id
+        self.__channel_id = channel_id
 
     def to_json(self, filename) -> None:
         """
@@ -54,7 +54,10 @@ class Channel:
         return f'{self.title}, {self.url}'
 
     def __add__(self, other):
-        return self.subscriber_count + other.subscriber_count
+        if type(other) == Channel:
+            return self.subscriber_count + other.subscriber_count
+        else:
+            return f"Параметр 'other' должен быть экземпляром класса Channel"
 
     def __sub__(self, other):
         return int(self.subscriber_count) - int(other.subscriber_count)
@@ -77,4 +80,3 @@ class Channel:
 
     def __eq__(self, other):
         return self.subscriber_count == other.subscriber_count
-
